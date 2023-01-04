@@ -1,6 +1,8 @@
 package com.lgm.publicdata.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.json.JSONObject;
+import org.json.XML;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -56,6 +58,12 @@ public class MainController {
         RestTemplate restTemplate = new RestTemplate();
 
         ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
+
+        // response body에 담겨있는 xml을 json화
+        JSONObject json = XML.toJSONObject(response.getBody().toString());
+        // 행간 거리 4칸
+        System.out.println(json.toString(4));
+
         return response;
     }
 
