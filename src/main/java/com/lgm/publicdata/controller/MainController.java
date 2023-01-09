@@ -61,8 +61,8 @@ public class MainController {
 
         // response body에 담겨있는 xml을 json화
         JSONObject json = XML.toJSONObject(response.getBody().toString());
-        // 행간 거리 4칸
-        System.out.println(json.toString(4));
+        // 행간 거리 2칸
+        System.out.println(json.toString(2));
 
         return response;
     }
